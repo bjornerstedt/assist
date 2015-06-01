@@ -1,0 +1,36 @@
+---
+title: "assist"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{assist}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Data
+
+[dplyr](dplyr.html)
+
+```
+This text is displayed verbatim / preformatted
+```
+
+
+## Graphics
+
+ggplot2
+
+```
+This text is displayed verbatim / preformatted
+```
+
+
+## Statistics
+
+
+```
+This text is displayed verbatim / preformatted
+```

@@ -1,0 +1,39 @@
+---
+title: "dplyr"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dplyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[assist](assist.html)
+
+## Init
+
+[dplyr](dplyr.html)
+
+```
+This text is displayed verbatim / preformatted
+```
+
+
+
+## Graphics
+
+ggplot2
+
+```
+This text is displayed verbatim / preformatted
+```
+
+
+## Statistics
+
+
+```
+This text is displayed verbatim / preformatted
+```
