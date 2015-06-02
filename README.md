@@ -5,12 +5,12 @@ The package provides basic code fragments and links to relevant sites.
 
 ## Installation
 
-Use devtools to download:
+Use devtools to download and install the assist package:
 
 ```
+install.packages("devtools")
 devtools::install_github("bjornerstedt/assist", build_vignettes = TRUE)
 ```
-
 ## Using
 ```
 library(assist)
