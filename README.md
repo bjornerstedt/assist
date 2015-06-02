@@ -16,7 +16,7 @@ devtools::install_github("bjornerstedt/assist", build_vignettes = TRUE)
 library(assist)
 assist()
 ```
-Opens browser with code snippets.
+Opens assist pages in the RStudio viewer pane.
 
 ## Developing
 
