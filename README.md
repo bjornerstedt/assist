@@ -16,7 +16,7 @@ devtools::install_github("bjornerstedt/assist", build_vignettes = TRUE)
 library(assist)
 assist()
 ```
-Opens assist pages in the RStudio viewer pane.
+Opens assist pages in the RStudio viewer pane. To use, copy and paste code into the editor.
 
 ## Developing
 
