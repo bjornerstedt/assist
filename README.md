@@ -11,7 +11,14 @@ Use devtools to download:
 devtools::install_github("bjornerstedt/assist", build_vignettes = TRUE)
 ```
 
-## Developing
+## Using
+```
+library(assist)
+assist()
+```
+Opens browser with code snippets.
+
+#% Developing
 
 Edit /vignettes/*.Rmd files.  Build with commands:
 
@@ -20,10 +27,3 @@ devtools::build()
 devtools::build_vignettes()
 devtools::install()
 ```
-
-## Using
-```
-library(assist)
-assist()
-```
-Opens browser with code snippets.
