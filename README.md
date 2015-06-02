@@ -1,5 +1,5 @@
 # assist
-Quick code assist for basic R
+Quick code assist for basic R. Testing user documentation in R packages with help files and vignettes.
 
 The package provides basic code fragments and links to relevant sites.
 
