@@ -18,7 +18,7 @@ assist()
 ```
 Opens browser with code snippets.
 
-#% Developing
+## Developing
 
 Edit /vignettes/*.Rmd files.  Build with commands:
 
