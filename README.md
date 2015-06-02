@@ -20,7 +20,7 @@ Opens browser with code snippets.
 
 ## Developing
 
-Edit /vignettes/*.Rmd files.  Build with commands:
+Pages were developed with markdown. To modify code, edit the /vignettes/*.Rmd files.  Build with commands:
 
 ```
 devtools::build()
