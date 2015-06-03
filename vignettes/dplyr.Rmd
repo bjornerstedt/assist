@@ -1,39 +1,87 @@
 ---
-title: "dplyr"
-author: "Vignette Author"
-date: "`r Sys.Date()`"
+title: "dplyr assist"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{dplyr}
+  %\VignetteIndexEntry{assist-dplyr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-[assist](assist.html)
+[Back to overview](assist.html)
 
-## Init
-
-[dplyr](dplyr.html)
-
+## Filter rows
 ```
-This text is displayed verbatim / preformatted
+dataframe %>% 
+filter(month == 1, day == 1)
 ```
 
+## Sort rows
+```
+dataframe %>% 
+arrange(year, month)
+```
+## Select columns
+```
+dataframe %>% 
+select(year, month)
+```
+## Unique rows
+```
+dataframe %>% 
+distinct()
+```
+## Add column
+```
+dataframe %>% 
+mutate(dataframe,
+  gain = arr_delay - dep_delay,
+  gain_per_hour = gain / (air_time / 60)
+)
+```
+## Grouping - by
+```
+dataframe %>% 
+group_by(column)
+```
+## Summarize
+```
+dataframe %>% 
+summarise(
+  count = n(),
+  dist = mean(distance, na.rm = TRUE),
+  s = sum(distance, na.rm = TRUE)
+)
+```
+Functions: `n_distinct(x), first(x), last(x), nth(x, n)`
 
+## Reshape
 
-## Graphics
-
-ggplot2
+Convert key value pairs to wide format: varname becomes key.
 
 ```
-This text is displayed verbatim / preformatted
+library(tidyr)
+dataframe %>% 
+gather(key, value, ..., na.rm = FALSE, convert = FALSE)
 ```
 
-
-## Statistics
-
+Convert key value pairs to long format
 
 ```
-This text is displayed verbatim / preformatted
+library(tidyr)
+dataframe %>% 
+spread(col, into, sep = "[^[:alnum:]]+", remove = TRUE,
+  convert = FALSE, extra = "error", ...)
 ```
+## Split a column into new columns
+
+```
+library(tidyr)
+dataframe %>% 
+separate(col, into, sep = "[^[:alnum:]]+", remove = TRUE,
+  convert = FALSE, extra = "error", ...)
+```
+
+unite is the opposite command
+stringi
+

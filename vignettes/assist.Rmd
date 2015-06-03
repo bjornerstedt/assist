@@ -9,28 +9,47 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+- [Graphics with ggplot2](http://docs.ggplot2.org/current/)
+- [Output: R markdown](http://rmarkdown.rstudio.com/)
+- [Quick R reference](http://www.statmethods.net/)
+- [Data management](data-management.html)
+  - [dplyr](dplyr.html)
 
-## Data
 
-[dplyr](dplyr.html)
+## Data import
 
+### Import Stata
 ```
-This text is displayed verbatim / preformatted
-```
+library(foreign)
 
-
-## Graphics
-
-ggplot2
-
-```
-This text is displayed verbatim / preformatted
+mydata <- read.dta("filename")
 ```
 
+Export via Excel
 
-## Statistics
+### Import Excel
+```
+library(readxl)
 
+data <- read_excel("", sheet = "sheetname", col_names = TRUE, skip = 0)
 
 ```
-This text is displayed verbatim / preformatted
+
+Export
+```
+library(xlsx)
+write.xlsx(mydata100, file = "test", sheetName = "sheet", 
+  col.names=TRUE, row.names=TRUE, append=FALSE, showNA=TRUE)  
+```
+
+### Import Textfile
+Delimeted
+```
+library(readr)
+
+```
+CSV
+```
+library(readr)
+
 ```

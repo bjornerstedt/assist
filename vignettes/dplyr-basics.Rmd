@@ -1,0 +1,52 @@
+---
+title: "dplyr assist"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{assist-dplyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Back to overview](assist.html)
+
+## Initialize
+
+```
+library(dplyr)
+library(tidy)
+```
+
+## Syntax with piping
+
+Using the `%>%` symbol, output from one command can be sent to another. 
+
+For example if `salesdata` is a data.frame, the `head` command selects the first 5 rows. Thus the command 
+```
+salesdata <- data.frame(xxx)
+head(salesdata)
+```
+prints the first five lines on the screen. The same command can be written as
+
+
+```
+salesdata <- data.frame(xxx)
+salesdata %>% head()
+```
+This different way of writing, *piping* the results to the head command is useful when many processing steps are to be taken.
+
+## Piping with dplyr
+
+The following code creates the salesdata data.frame. The date and product columns are then selected. The data is then sorted by date and the resultant new dataset is stored in proddata. 
+```
+salesdata <- data.frame(xxx)
+salesdata %>% 
+select(date, product) %>% 
+arrange(date) ->
+proddata
+
+```
+
+
+
+

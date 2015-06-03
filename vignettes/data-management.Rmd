@@ -1,0 +1,46 @@
+---
+title: "Data management"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{assist-data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+- [Back to overview](assist.html)
+- [dplyr](dplyr.html)
+  - [dplyr basics](dplyr-basics.html)
+
+Merge and append
+
+### Merge
+
+```
+both <- merge( myleft, myright, by=c("id","workshop") )
+```
+
+with  different names:
+
+```
+both <- merge( myleft,myright,
+               by.x=c("id", "workshop"),
+               by.y=c("subject","shortCourse")
+)
+```
+See also tidyr package
+
+### Append
+
+```
+both <- rbind(data1, data2)
+```
+Unmatched cols
+
+### Reshape 
+
+```
+library(tidyr)
+
+xxx
+```

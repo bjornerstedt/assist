@@ -1,11 +1,13 @@
 Package: assist
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Help files, vignettes and packaging
 Version: 0.1
 Date: 2015-06-01
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
+Authors@R: person("First", "Last", email = "jonas@bjornerstedt.org", role = c("aut", "cre"))
+Description: A study in package help structure
 License: What license is it under?
 LazyData: TRUE
+Depends:
+  rstudioapi
 Suggests: knitr
 VignetteBuilder: knitr
