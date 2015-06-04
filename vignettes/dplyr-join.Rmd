@@ -1,0 +1,39 @@
+---
+title: "dplyr assist"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{assist-dplyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Back to overview](assist.html)
+
+# Joins
+
+dplyr implements the four most useful joins from SQL:
+
+## inner_join(x, y): matching x + y
+```
+dataframe %>% 
+filter(month == 1, day == 1)
+```
+
+## left_join(x, y): all x + matching y
+
+## semi_join(x, y): all x with match in y
+
+## anti_join(x, y): all x without match in y
+
+# Methods
+And provides methods for:
+
+## intersect(x, y): all rows in both x and y
+
+## union(x, y): rows in either x or y
+
+## setdiff(x, y): rows in x, but not y
+
