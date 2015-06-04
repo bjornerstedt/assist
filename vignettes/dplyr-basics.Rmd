@@ -1,14 +1,15 @@
 ---
-title: "dplyr assist"
+title: "dplyr basics"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{assist-dplyr}
+  %\VignetteIndexEntry{assist-dplyr-basics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-[Back to overview](assist.html)
+* [Back to overview](assist.html)
+* [Back to dplyr](dplyr.html)
 
 ## Initialize
 

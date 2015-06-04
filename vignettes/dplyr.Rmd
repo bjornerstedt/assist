@@ -1,5 +1,5 @@
 ---
-title: "dplyr assist"
+title: "dplyr commands"
 output: 
   rmarkdown::html_vignette
 vignette: >
@@ -8,7 +8,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-[Back to overview](assist.html)
+- [Back to overview](assist.html)
+- [dplyr basics](dplyr-basics.html)
+- [dplyr join](dplyr-join.html)
 
 ## Filter rows
 ```
@@ -31,7 +33,7 @@ select(year, month)
 dataframe %>% 
 distinct()
 ```
-## Add column
+## Add/modify column
 ```
 dataframe %>% 
 mutate(dataframe,
@@ -81,7 +83,8 @@ dataframe %>%
 separate(col, into, sep = "[^[:alnum:]]+", remove = TRUE,
   convert = FALSE, extra = "error", ...)
 ```
-
 unite is the opposite command
+
+Regex basics - via ?grep
 stringi
 

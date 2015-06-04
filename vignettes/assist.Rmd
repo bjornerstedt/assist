@@ -1,9 +1,7 @@
 ---
 title: "assist"
 output: 
-  rmarkdown::html_vignette:
-    toc: true
-    toc_depth: 2
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{assist}
   %\VignetteEngine{knitr::rmarkdown}
@@ -15,6 +13,19 @@ vignette: >
 - [Data management](data-management.html)
   - [dplyr](dplyr.html)
 
+
+## Opening and saving data
+Data files contain one or many variables (as in Matlab). Open file with variables
+
+```
+load("filename")
+```
+Note that existing variables in the global environment will be overwritten by the ones saved in the file. 
+
+Save file
+```
+save(vars, file = "filename)
+```
 
 ## Data import
 
@@ -43,13 +54,20 @@ write.xlsx(mydata100, file = "test", sheetName = "sheet",
 ```
 
 ### Import Textfile
-Delimeted
+
+CSV files with semicolon are read with `read_csv2()`
 ```
 library(readr)
-
+read_csv2(file, col_names = TRUE, col_types = NULL, skip = 0, n_max = -1)
 ```
-CSV
+- With `n_max = 100`, only the first 100 rows are read. 
+- `col_names`	are either TRUE/FALSE or a character vector of column names.
+- `col_types	= "cde_D"` (char, decimal, decimal with comma, ignore, Y-m-d dates), or a list or a named list.
+
+How does skip work if col_names = TRUE?
+
+Delimeted files can be read with a similar set of options as read_csv:
 ```
 library(readr)
-
+read_delim(file, delim , ...)
 ```

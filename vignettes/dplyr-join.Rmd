@@ -1,39 +1,43 @@
 ---
-title: "dplyr assist"
+title: "dplyr joins"
 output: 
-  rmarkdown::html_vignette:
-    toc: true
-    toc_depth: 2
+  rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{assist-dplyr}
+  %\VignetteIndexEntry{assist-dplyr-join}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-[Back to overview](assist.html)
+* [Back to overview](assist.html)
+* [Back to dplyr](dplyr.html)
 
 # Joins
 
-dplyr implements the four most useful joins from SQL:
+dplyr implements the four most useful joins from SQL
 
-## inner_join(x, y): matching x + y
-```
-dataframe %>% 
-filter(month == 1, day == 1)
-```
+Many to one on
 
-## left_join(x, y): all x + matching y
+* nothing specified: common variables
+* `by = "varname"`: common named variable
+* `c("origin" = "faa")`: different variables
 
-## semi_join(x, y): all x with match in y
+left_join(x, y) includes all observations in x, regardless of whether they match or not. This is the most commonly used join because it ensures that you don’t lose observations from your primary table. 
 
-## anti_join(x, y): all x without match in y
+If a match is not unique, a join will add all possible combinations.
 
-# Methods
-And provides methods for:
+* left_join(x, y): all x + matching y
+* right_join(x, y): equivalent to left_join(y, x)
+* inner_join(x, y): keep only matching x + y
+* full_join() includes all observations from x and y.
 
-## intersect(x, y): all rows in both x and y
+## Filtering joins
 
-## union(x, y): rows in either x or y
+* semi_join(x, y): all x with match in y
+* anti_join(x, y): all x without match in y
 
-## setdiff(x, y): rows in x, but not y
+## Set operations
+
+* intersect(x, y): all rows in both x and y
+* union(x, y): rows in either x or y
+* setdiff(x, y): rows in x, but not y
 
