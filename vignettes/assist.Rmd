@@ -9,6 +9,7 @@ vignette: >
 ---
 - [Graphics with ggplot2](http://docs.ggplot2.org/current/)
 - [Output: R markdown](http://rmarkdown.rstudio.com/)
+  - [Tables with pander](http://rapporter.github.io/pander/)
 - [Quick R reference](http://www.statmethods.net/)
 - [Data management](data-management.html)
   - [dplyr](dplyr.html)

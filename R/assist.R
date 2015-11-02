@@ -1,12 +1,7 @@
-assist <- function(helpfile) {
-  # Make class to avoid repeated creation of tempdir
-  tempDir <- tempfile()
-  dir.create(tempDir)
-
-  helpfiles <- list.files("inst/doc/", ".html$", full.names = TRUE)
-  file.copy(helpfiles, tempDir)
-  htmlFile <- file.path(tempDir, "assist.html")
-
-  # Only code required, if htmlFile is saved to class.
-  rstudioapi::viewer(htmlFile)
+assist <- function() {
+x <<-  data.frame(c(1,2))
+yy<<-data.frame(var1=c(2,2),var2=c(3,4))
+message("Select menu alternatives in the Viewer pane, or press Esc to cancel")
+runApp("shiny-dialog")
+# runApp('shiny-menu')
 }
