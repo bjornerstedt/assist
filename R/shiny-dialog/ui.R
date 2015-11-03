@@ -6,19 +6,23 @@ data_frame_names <- function() {
   c(choose,dfnames)
 }
 
+data_frame_vars <- function() {
+  sidebarPanel(
+    selectInput("data_frame", label = h5("Select data frame"),
+                choices = data_frame_names(), selectize = FALSE),
+    textOutput("text1"),
+    br(),
+    uiOutput("selectVar1"),
+    uiOutput("selectVar2"),
+    actionButton('submit', "Submit")
+  )
+}
+
 shinyUI(fluidPage(
-  # titlePanel(a),
-   titlePanel("Select data and fields"),
+  titlePanel("Select data and fields"),
 
   sidebarLayout(
-    sidebarPanel(
-      selectInput("data_frame", label = h5("Select data frame"),
-                  choices = data_frame_names(), selectize = FALSE),
-      textOutput("text1"),
-      br(),
-      htmlOutput("selectVar1"),
-      actionButton('submit', "Submit")
-    ),
+    data_frame_vars(),
     mainPanel()
   )
 ))

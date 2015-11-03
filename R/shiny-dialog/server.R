@@ -16,4 +16,10 @@ shinyServer(function(input, output) {
       selectInput("varname1", "Select your choice", varnames)
     }
   })
+  output$selectVar2 <- renderUI({
+    if(input$data_frame != '') {
+      varnames <- colnames(get(input$data_frame))
+      selectInput("varname2", "Select your choice", varnames)
+    }
+  })
 })

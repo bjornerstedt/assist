@@ -2,6 +2,7 @@ library(shiny)
 library(stringr)
 
 shinyServer(function(input, output, session) {
+
   output$plot <- renderPlot({
     plot(cars, type=input$plotType)
   })

@@ -1,25 +1,24 @@
-shinyUI(
-  navbarPage("R Mosaic",
-             navbarMenu("Data",
-                        tabPanel("Panel 1",
-                                 tabsetPanel("Panel 1.x",
-                                             tabPanel("Panel 1.1"),
-                                             tabPanel("Panel 1.2")
-                                 )
-                        )
-             ),
-             navbarMenu("Statistics",
-                        tabPanel("Panel 2"),
-                        tabPanel("Panel 3")
-             ),
-             navbarMenu("Graphics",
-                        tabPanel("Panel 2"),
-                        tabPanel("Panel 3")
-             ),
-             collapsible = FALSE,
-             header = tags$head(tags$style(type='text/css', ".navbar-header { font-size: 10pt; }"))
-  )
-)
+shinyUI(navbarPage("R Mosaic",
+   navbarMenu("Data",
+      tabPanel("Panel 1",
+         tabsetPanel("Panel 1.x",
+           tabPanel("Panel 1.1", actionButton('submit', "Submit")),
+           tabPanel("Panel 1.2")
+         )
+      )
+   ),
+   navbarMenu("Statistics",
+      tabPanel("Panel 2"),
+      tabPanel("Panel 3")
+   ),
+   navbarMenu("Graphics",
+      tabPanel("Panel 2"),
+      tabPanel("Panel 3")
+   ),
+   collapsible = FALSE
+   # , header = tags$head(tags$style(type='text/css', ".navbar-header { font-size: 10pt; }"))
+))
+
 #
 # shinyUI(navbarPage("Navbar!",
 #                    tabPanel("Plot",
