@@ -7,6 +7,7 @@ df_names <- function() {
 }
 
 df_vars <- function(cname, multipleVars = TRUE) {
+  menu_choice <<- cname
   sidebarPanel(
     selectInput("data_frame", label = h5("Select data frame"),
                 choices = df_names(), selectize = FALSE),
@@ -16,7 +17,8 @@ df_vars <- function(cname, multipleVars = TRUE) {
     br(),
     textInput('varname', 'Put result in variable'),
     br(),
-    actionButton(cname, "Submit")
+    actionButton(cname, "Submit"),
+    actionButton("cancel", "Cancel")
   )
 }
 
@@ -25,13 +27,14 @@ navbarMenu("Data",
  tabPanel("Panel 2")
 ),
 navbarMenu("Statistics",
-tabPanel("Describe", df_vars('submit')),
+tabPanel("Describe", df_vars('submit'), value='describe'),
 tabPanel("Panel 3")
 ),
 navbarMenu("Graphics",
 tabPanel("Panel 2"),
 tabPanel("Panel 3")
 ),
-collapsible = FALSE
+collapsible = FALSE,
+id ="menu_choice"
 # , header = tags$head(tags$style(type='text/css', ".navbar-header { font-size: 10pt; }"))
 ))
