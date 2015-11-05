@@ -1,13 +1,10 @@
 # assist
-Quick code assist for basic R. assist opens a Viewer pane with a menu to execute code. Currently it can run the "shiny-dialog" app or the "shiny-menu" app.
 
-## shiny-dialog
+Quick code assist for basic R. assist opens a Viewer pane with a menu to execute code. Currently it only has one command implemented: Data > Describe.
 
-A basic dialog box that detects data frames and variables in these and helps to select. 
+## describe command
 
-## shiny-menu
-
-Displays a non-functional menubar.
+The describe command creates a data frame with the most basic summary statistics. The syntax is describe(df, ...) where the additional arguments are as described in the dplyr select command.
 
 ## Installation
 
@@ -24,7 +21,7 @@ assist()
 ```
 assist() opens a viewer pane dialog box. Selecting fields and completing currently only posts a message with a command.
 
-old_assist() opens assist pages in the RStudio viewer pane. To use, copy and paste code into the editor.
+// old_assist() opens assist pages in the RStudio viewer pane. To use, copy and paste code into the editor.
 
 ## Developing
 
