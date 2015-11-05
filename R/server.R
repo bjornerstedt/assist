@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
         outstr <- 'describe('
       command <<- str_c(outstr, input$data_frame, ", ", paste(input$varname1, collapse = ', '), ")")
       stopApp()
-      message(command)
+      message("\nExecuted command:\n",command,"\n")
     }
   })
   observeEvent(input$cancel,{
