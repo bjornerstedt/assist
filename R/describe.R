@@ -30,7 +30,7 @@ describe <- function(df,...)
   }
   dfout <- as.data.frame(dfout)
   dfout <- bind_cols(data_frame(vars=names(df),
-      type=sapply(out, function(x)str_c("(",type_sum(x),")") )),dfout)
+      type=sapply(df, function(x)str_c("(",type_sum(x),")") )),dfout)
 
   if(hasFactors)
     dfout$factor <- factorLevels
