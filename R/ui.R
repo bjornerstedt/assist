@@ -1,5 +1,8 @@
 library(shiny)
 
+# Get data frame with all datasets
+# x <- as.data.frame(data()$results)
+
 df_names <- function() {
   choose = list("Choose data frame" = '')
   dfnames <- as.list(Filter(function(x) is.data.frame(get(x)), ls(envir=.GlobalEnv) ))

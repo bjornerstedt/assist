@@ -1,0 +1,56 @@
+---
+title: "dplyr assist"
+output: 
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{dplyr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+[Back to overview](assist.html)
+
+## Filter rows
+```
+flights %>% 
+filter(month == 1, day == 1)
+```
+
+## Sort rows
+```
+flights %>% 
+arrange(year, month)
+```
+## Select columns
+```
+flights %>% 
+select(year, month)
+```
+## Unique rows
+```
+flights %>% 
+distinct()
+```
+## Add column
+```
+flights %>% 
+mutate(flights,
+  gain = arr_delay - dep_delay,
+  gain_per_hour = gain / (air_time / 60)
+)
+```
+## Grouping - by
+```
+flights %>% 
+group_by(column)
+```
+## Summarize
+```
+flights %>% 
+summarise(
+  count = n(),
+  dist = mean(distance, na.rm = TRUE),
+  s = sum(distance, na.rm = TRUE)
+)
+```
+Functions: `n_distinct(x), first(x), last(x), nth(x, n)`
