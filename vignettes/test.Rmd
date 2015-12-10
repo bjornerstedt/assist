@@ -1,26 +1,63 @@
 ---
-title: "test"
-output: word_document
+title: "Untitled"
+author: "Jonas Björnerstedt"
+date: "6 November 2015"
+output: html_document
 ---
+
+```{r setup, include=FALSE}
+describe <- function(df,...)
+{
+  require(stringr)
+  require(dplyr)
+  if(!is.data.frame(df))
+    stop("First argument must be a data frame")
+  df <- df[!sapply(df, is.character)]
+  if(length(names(df)) == 0)
+    stop("No numeric variables found.")
+  if (nargs() > 1)
+      df <- df %>% select(...)
+  # Create a string var with factor levels
+  factorLevels <- sapply(df, function(x)ifelse(is.factor(x),
+    ifelse(str_length(fd <- str_c(levels(x), collapse = '/')) < 10, fd, str_c(length(levels(x)), " levels") ),
+    ''))
+  hasFactors <- any(sapply(df, is.factor))
+  df <- df %>% mutate_each(funs(as.numeric))
+  dfout <- sapply(c(mean=mean, min=min, max=max, n=function(x,...)sum(1-is.na(x))),
+    function(x){sapply(df, x, na.rm=TRUE)})
+  # Handle strange behavior of sapply when there is only one variable
+  if(length(df) == 1) {
+    dfout <- t(as.matrix(dfout))
+    rownames(dfout) <- names(df)
+    colnames(dfout) <- c("mean","min","max","n")
+  }
+  dfout <- as.data.frame(dfout)
+  if(hasFactors)
+    dfout$factor <- factorLevels
+  dfout
+}
+```
+
+## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-Knitr
-```{r, results='asis'}
-knitr::kable(head(mtcars)[,1:5], digits=2)
+```{r }
+describe(iris, matches("Sep"))
 ```
 
-Pander
-```{r, results='asis'}
-pander::set.alignment(, row.names = 'left')
-pander::pandoc.table(head(mtcars)[,1:5])
+```{r }
+describe(iris)
 ```
 
+## Including Plots
 
-```{r, results='asis'}
-df <- data.frame(a = 'Lorem ipsum', b = 'dolor sit', c = 'amet')
-pander::pandoc.table(df, split.cells = c("80%", "10%", "10%"))
+You can also embed plots, for example:
 
+```{r pressure, echo=FALSE}
+plot(pressure)
 ```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

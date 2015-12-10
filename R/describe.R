@@ -31,8 +31,11 @@ describe <- function(df,...)
   }
   dfout <- as.data.frame(dfout)
   dfout <- bind_cols(data_frame(vars=names(df),type=varType),dfout)
-
+ # format(dfout$mean, digits=3, scientific = FALSE, nsmall = 0) 
+  formatC(dfout$min) 
+  
   if(hasFactors)
     dfout$factor <- factorLevels
- dfout
+#  format(dfout, digits=3, scientific = FALSE, nsmall = 0) 
+  as.data.frame(dfout)
 }

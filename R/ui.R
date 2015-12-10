@@ -26,15 +26,15 @@ df_vars <- function() {
 
 menu_plot2 <- function() {
   sidebarPanel(
-    df_names(),
-    textOutput("text1"),
+    # df_names(),
+    # textOutput("text1"),
     uiOutput("selectVar1"),
     uiOutput("selectVar2"),
-    br(),
-    textInput('varname', 'Put plot result in variable'),
-    br(),
-    actionButton('submit', "Submit"),
-    actionButton("cancel", "Cancel")
+    br()
+    # textInput('varname', 'Put plot result in variable'),
+    # br(),
+    # actionButton('submit', "Submit"),
+    # actionButton("cancel", "Cancel")
   )
 }
 
@@ -49,7 +49,7 @@ shinyUI(navbarPage("R Mosaic",
   ),
 
   navbarMenu("Graphics",
-    # tabPanel("Plot", menu_plot2(), value='plot'),
+    tabPanel("Plot", menu_plot2(), value='plot'),
     tabPanel("Panel 3")
   ),
 
