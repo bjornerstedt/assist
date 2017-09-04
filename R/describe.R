@@ -1,3 +1,12 @@
+#' Title
+#'
+#' @param df data frame
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
 describe <- function(df,...)
 {
   require(stringr)
@@ -7,16 +16,16 @@ describe <- function(df,...)
   # df <- df[!sapply(df, is.character)]
   ischar <- sapply(df, is.character)
   if (nargs() > 1)
-      df <- df %>% select(...)
-  varType <- sapply(df, function(x)str_c("(",type_sum(x),")") )
+      df <- dplyr::select(df, ...)
+  varType <- sapply(df, function(x)stringr::str_c("(",type_sum(x),")") )
   if(any(ischar))
-    df <- mutate_each_(df, funs(str_length), names(df)[ischar])
+    df <- dplyr::mutate_each_(df, funs(stringr::str_length), names(df)[ischar])
   # Create a string var with factor levels
   factorLevels <- sapply(df, function(x)ifelse(is.factor(x),
-    ifelse(str_length(fd <- str_c(levels(x), collapse = '/')) < 10, fd, str_c(length(levels(x)), " levels") ),
+    ifelse(stringr::str_length(fd <- stringr::str_c(levels(x), collapse = '/')) < 10, fd, stringr::str_c(length(levels(x)), " levels") ),
     ''))
   hasFactors <- any(sapply(df, is.factor))
-  dfout <- df %>% mutate_each(funs(as.numeric))
+  dfout <- dplyr::mutate_each(df, funs(as.numeric))
   dfout <- sapply(c(
     mean=mean,
     sd=sd,
@@ -31,11 +40,11 @@ describe <- function(df,...)
   }
   dfout <- as.data.frame(dfout)
   dfout <- bind_cols(data_frame(vars=names(df),type=varType),dfout)
- # format(dfout$mean, digits=3, scientific = FALSE, nsmall = 0) 
-  formatC(dfout$min) 
-  
+ # format(dfout$mean, digits=3, scientific = FALSE, nsmall = 0)
+  formatC(dfout$min)
+
   if(hasFactors)
     dfout$factor <- factorLevels
-#  format(dfout, digits=3, scientific = FALSE, nsmall = 0) 
+#  format(dfout, digits=3, scientific = FALSE, nsmall = 0)
   as.data.frame(dfout)
 }

@@ -8,6 +8,10 @@ Description: A study in package help structure
 License: What license is it under?
 LazyData: TRUE
 Depends:
-  rstudioapi
-Suggests: knitr
+  rstudioapi,
+  dplyr,
+  stringr
+Suggests: knitr,
+    testthat
 VignetteBuilder: knitr
+RoxygenNote: 6.0.1
