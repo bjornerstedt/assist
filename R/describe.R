@@ -1,50 +1,35 @@
-#' Title
+#' describe
+#'
+#' describe provides summary statistics of variables. Logicals and factors are converted to
+#' numeric and for strings statistics of string length are provided.
 #'
 #' @param df data frame
-#' @param ...
+#' @param ... optional list of variables or other dplyr selection
 #'
-#' @return
+#' @return data frame with summary statistics
 #' @export
 #'
-#' @examples
+#' @examples describe(cars)
+
 describe <- function(df,...)
 {
-  require(stringr)
-  require(dplyr)
-  if(!is.data.frame(df))
-    stop("First argument must be a data frame")
-  # df <- df[!sapply(df, is.character)]
-  ischar <- sapply(df, is.character)
-  if (nargs() > 1)
-      df <- dplyr::select(df, ...)
-  varType <- sapply(df, function(x)stringr::str_c("(",type_sum(x),")") )
-  if(any(ischar))
-    df <- dplyr::mutate_each_(df, funs(stringr::str_length), names(df)[ischar])
-  # Create a string var with factor levels
-  factorLevels <- sapply(df, function(x)ifelse(is.factor(x),
-    ifelse(stringr::str_length(fd <- stringr::str_c(levels(x), collapse = '/')) < 10, fd, stringr::str_c(length(levels(x)), " levels") ),
-    ''))
-  hasFactors <- any(sapply(df, is.factor))
-  dfout <- dplyr::mutate_each(df, funs(as.numeric))
-  dfout <- sapply(c(
-    mean=mean,
-    sd=sd,
-    min=min,
-    max=max,
-    n=function(x,...)sum(1-is.na(x))),
-    function(x){sapply(dfout, x, na.rm=TRUE)})
-  # Handle strange behavior of sapply when there is only one variable
-  if(length(df) == 1) {
-    dfout <- t(as.matrix(dfout))
-    colnames(dfout) <- c("mean","sd","min","max","n")
-  }
-  dfout <- as.data.frame(dfout)
-  dfout <- bind_cols(data_frame(vars=names(df),type=varType),dfout)
- # format(dfout$mean, digits=3, scientific = FALSE, nsmall = 0)
-  formatC(dfout$min)
-
-  if(hasFactors)
-    dfout$factor <- factorLevels
-#  format(dfout, digits=3, scientific = FALSE, nsmall = 0)
-  as.data.frame(dfout)
+  if (nargs() > 1) df = dplyr::select(df, ...)
+  df %>%
+    mutate_if(is.character, str_length) %>%
+    mutate_if( is.factor, as.numeric) %>%
+    mutate_if(is.logical, as.numeric) %>%
+    gather(var, value) %>%
+    mutate(na = 1 - is.na(value)) %>%
+    group_by(var) %>%
+    summarise(
+      mean = mean(value, na.rm = TRUE),
+      sd = sd(value, na.rm = TRUE),
+      min = min(value, na.rm = TRUE),
+      max = max(value, na.rm = TRUE),
+      N = sum(na)
+    ) %>%
+    bind_cols( data_frame(type =map(df, function(x)stringr::str_c("<",type_sum(x),">")) )) %>%
+    select(var, type, N, everything()) %>%
+    mutate_if(is.numeric, ~ round(.x , digits = 3) ) %>%
+    as.data.frame()
 }

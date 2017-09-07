@@ -2,15 +2,22 @@
 % Please edit documentation in R/describe.R
 \name{describe}
 \alias{describe}
-\title{Title}
+\title{describe}
 \usage{
 describe(df, ...)
 }
 \arguments{
 \item{df}{data frame}
 
-\item{...}{}
+\item{...}{optional list of variables or other dplyr selection}
+}
+\value{
+data frame with summary statistics
 }
 \description{
-Title
+describe provides summary statistics of variables. Logicals and factors are converted to
+numeric and for strings statistics of string length are provided.
+}
+\examples{
+describe(cars)
 }
